@@ -22,9 +22,9 @@ namespace BryceStory.Admin.Web
 {
     public class Startup
     {
-
         public IConfiguration Configuration { get; }
         public IWebHostEnvironment WebHostEnvironment { get; set; }
+
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
@@ -73,29 +73,41 @@ namespace BryceStory.Admin.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (!string.IsNullOrEmpty(GlobalContext.SystemConfig.VirtualDirectory))
             {
+                app.UsePathBase(new PathString(GlobalContext.SystemConfig.VirtualDirectory)); // 让 Pathbase 中间件成为第一个处理请求的中间件， 才能正确的模拟虚拟路径
+            }
+            if (WebHostEnvironment.IsDevelopment())
+            {
+                GlobalContext.SystemConfig.Debug = true;
                 app.UseDeveloperExceptionPage();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
             }
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
+            //string resource = Path.Combine(env.ContentRootPath, "Resource");
+            //FileHelper.CreateDirectory(resource);
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = GlobalContext.SetCacheControl
+            });
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    RequestPath = "/Resource",
+            //    FileProvider = new PhysicalFileProvider(resource),
+            //    OnPrepareResponse = GlobalContext.SetCacheControl
+            //});
+            app.UseSession();
             app.UseRouting();
-
-            app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Login}/{id?}");
+                endpoints.MapControllerRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
+            GlobalContext.ServiceProvider = app.ApplicationServices;
         }
     }
 }

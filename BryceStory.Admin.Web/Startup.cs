@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using System.Threading.Tasks;
+using BryceStory.Admin.Web.Filter;
 using BryceStory.Utility;
 using BryceStory.Utility.Model;
 using Microsoft.AspNetCore.Builder;
@@ -15,6 +16,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
 
 namespace BryceStory.Admin.Web
 {
@@ -46,15 +48,15 @@ namespace BryceStory.Admin.Web
             });
 
             services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
-            //services.AddControllersWithViews(options =>
-            //{
-            //    options.Filters.Add<GlobalExceptionFilter>();
-            //    options.ModelMetadataDetailsProviders.Add(new ModelBindingMetadataProvider());
-            //}).AddNewtonsoftJson(options =>
-            //{
-            //    // 返回数据首字母不小写，CamelCasePropertyNamesContractResolver是小写
-            //    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-            //});
+            services.AddControllersWithViews(options =>
+            {
+                options.Filters.Add<GlobalExceptionFilter>();
+                options.ModelMetadataDetailsProviders.Add(new ModelBindingMetadataProvider());
+            }).AddNewtonsoftJson(options =>
+            {
+                // 返回数据首字母不小写，CamelCasePropertyNamesContractResolver是小写
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+            });
 
             services.AddMemoryCache();
             services.AddSession();
@@ -92,7 +94,7 @@ namespace BryceStory.Admin.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Login}/{id?}");
             });
         }
     }

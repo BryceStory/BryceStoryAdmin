@@ -5,14 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Extention\Extension.Validate.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="41ay3pyt.r5e~" />
     <None Remove="GlobalContext.cs~RF11b6d5f.TMP" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.6" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.6" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <None Include="Extention\Extension.Validate.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.6" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.2" />
   </ItemGroup>
 

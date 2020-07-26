@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BryceStory.Cache.Interface\BryceStory.Cache.Interface.csproj" />
+    <ProjectReference Include="..\BryceStory.MemoryCache\BryceStory.MemoryCache.csproj" />
+    <ProjectReference Include="..\BryceStory.RedisCache\BryceStory.RedisCache.csproj" />
+    <ProjectReference Include="..\BryceStory.Utility\BryceStory.Utility.csproj" />
+  </ItemGroup>
+
+</Project>

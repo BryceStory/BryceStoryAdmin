@@ -43,7 +43,7 @@ namespace BryceStory.RedisCache
             }
             catch (Exception ex)
             {
-                LogHelper.Error(ex);
+                LogHelper.WriteWithTime(ex);
             }
             return false;
         }
@@ -67,7 +67,7 @@ namespace BryceStory.RedisCache
             }
             catch (Exception ex)
             {
-                LogHelper.Error(ex);
+                LogHelper.WriteWithTime(ex);
             }
             return t;
         }

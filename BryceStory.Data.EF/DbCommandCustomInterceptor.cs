@@ -24,7 +24,7 @@ namespace BryceStory.Data.EF
         {
             if (eventData.Duration.TotalMilliseconds >= GlobalContext.SystemConfig.DBSlowSqlLogTime * 1000)
             {
-                LogHelper.Warn("耗时的Sql：" + command.GetCommandText());
+                LogHelper.Write("耗时的Sql：" + command.GetCommandText());
             }
             int val = await base.NonQueryExecutedAsync(command, eventData, result, cancellationToken);
             return val;
@@ -40,7 +40,7 @@ namespace BryceStory.Data.EF
         {
             if (eventData.Duration.TotalMilliseconds >= GlobalContext.SystemConfig.DBSlowSqlLogTime * 1000)
             {
-                LogHelper.Warn("耗时的Sql：" + command.GetCommandText());
+                LogHelper.Write("耗时的Sql：" + command.GetCommandText());
             }
             var obj = await base.ScalarExecutedAsync(command, eventData, result, cancellationToken);
             return obj;
@@ -56,7 +56,7 @@ namespace BryceStory.Data.EF
         {
             if (eventData.Duration.TotalMilliseconds >= GlobalContext.SystemConfig.DBSlowSqlLogTime * 1000)
             {
-                LogHelper.Warn("耗时的Sql：" + command.GetCommandText());
+                LogHelper.Write("耗时的Sql：" + command.GetCommandText());
             }
             var reader = await base.ReaderExecutedAsync(command, eventData, result, cancellationToken);
             return reader;

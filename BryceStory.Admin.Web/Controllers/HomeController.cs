@@ -13,6 +13,17 @@ namespace BryceStory.Admin.Web.Controllers
 {
     public class HomeController : BaseController
     {
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+
+
+            return View();
+        }
+
+
+
         [HttpGet]
         public IActionResult Login()
         {

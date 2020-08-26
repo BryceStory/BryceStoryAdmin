@@ -29,7 +29,7 @@ namespace BryceStory.MemoryCache
             }
             catch (Exception ex)
             {
-                LogHelper.Error(ex);
+                LogHelper.WriteWithTime(ex);
             }
             return false;
         }

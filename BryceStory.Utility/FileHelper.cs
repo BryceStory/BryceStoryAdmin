@@ -14,6 +14,7 @@ namespace BryceStory.Utility
 {
     public static class FileHelper
     {
+        #region 创建文本文件
         /// <summary>
         /// 创建文件
         /// </summary>
@@ -25,18 +26,19 @@ namespace BryceStory.Utility
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
             }
-
             using (StreamWriter sw = new StreamWriter(path, false, Encoding.UTF8))
             {
                 sw.Write(content);
             }
         }
+        #endregion
 
+        #region 上传单个文件
         /// <summary>
         /// 上传单个文件
         /// </summary>
         /// <param name="fileModule"></param>
-        /// <param name="files"></param>
+        /// <param name="fileCollection"></param>
         /// <returns></returns>
         public async static Task<TData<string>> UploadFile(int fileModule, IFormFileCollection files)
         {
@@ -47,12 +49,11 @@ namespace BryceStory.Utility
                 obj.Message = "请先选择文件！";
                 return obj;
             }
-            if (files.Count>1)
+            if (files.Count > 1)
             {
                 obj.Message = "一次只能上传一个文件！";
                 return obj;
             }
-
             TData objCheck = null;
             IFormFile file = files[0];
             switch (fileModule)
@@ -96,12 +97,12 @@ namespace BryceStory.Utility
                     obj.Message = "请指定上传到的模块";
                     return obj;
             }
-            string fileExtension = TextHelper.GetCustomValue(Path.GetExtension(file.FileName),".png");
+            string fileExtension = TextHelper.GetCustomValue(Path.GetExtension(file.FileName), ".png");
 
             string newFileName = SecurityHelper.GetGuid() + fileExtension;
             string dir = "Resource" + Path.DirectorySeparatorChar + dirModule + Path.DirectorySeparatorChar + DateTime.Now.ToString("yyyy-MM-dd").Replace('-', Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
 
-            string absoluteDir = Path.Combine(GlobalContext.HostingEnvironment.ContentRootPath,dir);
+            string absoluteDir = Path.Combine(GlobalContext.HostingEnvironment.ContentRootPath, dir);
             string absoluteFileName = string.Empty;
             if (!Directory.Exists(absoluteDir))
             {
@@ -110,24 +111,23 @@ namespace BryceStory.Utility
             absoluteFileName = absoluteDir + newFileName;
             try
             {
-                using (FileStream fs=File.Create(absoluteFileName))
+                using (FileStream fs = File.Create(absoluteFileName))
                 {
                     await file.CopyToAsync(fs);
                     fs.Flush();
                 }
-                obj.Result = Path.AltDirectorySeparatorChar + ConvertDirectoryToHttp(dir) + newFileName;
+                obj.Data = Path.AltDirectorySeparatorChar + ConvertDirectoryToHttp(dir) + newFileName;
                 obj.Message = Path.GetFileNameWithoutExtension(TextHelper.GetCustomValue(file.FileName, newFileName));
                 obj.Description = (file.Length / 1024).ToString(); // KB
                 obj.Tag = 1;
-
             }
             catch (Exception ex)
             {
                 obj.Message = ex.Message;
             }
-
             return obj;
         }
+        #endregion
 
         #region 删除单个文件
         /// <summary>
@@ -192,7 +192,7 @@ namespace BryceStory.Utility
                 title = fileNameWithoutExtension.Split('_')[1].Trim();
             }
             string fileExtensionName = Path.GetExtension(filePath);
-            obj.Result = new FileContentResult(fileBytes, "application/octet-stream")
+            obj.Data = new FileContentResult(fileBytes, "application/octet-stream")
             {
                 FileDownloadName = string.Format("{0}_{1}{2}", fileNamePrefix, title, fileExtensionName)
             };
@@ -247,25 +247,21 @@ namespace BryceStory.Utility
         {
             try
             {
-                if (Directory.Exists(filePath))  //如果存在这个文件夹删除之
+                if (Directory.Exists(filePath)) //如果存在这个文件夹删除之 
                 {
                     foreach (string d in Directory.GetFileSystemEntries(filePath))
                     {
                         if (File.Exists(d))
-                        {
-                            File.Delete(d);//直接删除其中的文件 
-                        }
+                            File.Delete(d); //直接删除其中的文件                        
                         else
-                        {
-                            DeleteDirectory(d);//递归删除子文件夹
-                        }
-                        Directory.Delete(filePath, true);//删除已空文件夹
+                            DeleteDirectory(d); //递归删除子文件夹 
                     }
+                    Directory.Delete(filePath, true); //删除已空文件夹                 
                 }
             }
             catch (Exception ex)
             {
-                LogHelper.WriteWithTime(ex);
+                LogHelper.Error(ex);
             }
         }
 
@@ -275,6 +271,7 @@ namespace BryceStory.Utility
             directory = directory.Replace(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
             return directory;
         }
+
         public static string ConvertHttpToDirectory(string http)
         {
             http = http.ParseToString();
@@ -282,10 +279,9 @@ namespace BryceStory.Utility
             return http;
         }
 
-        public static TData CheckFileExtension(String fileExtension, string allowExtension)
+        public static TData CheckFileExtension(string fileExtension, string allowExtension)
         {
             TData obj = new TData();
-
             string[] allowArr = TextHelper.SplitToArray<string>(allowExtension.ToLower(), '|');
             if (allowArr.Where(p => p.Trim() == fileExtension.ParseToString().ToLower()).Any())
             {
@@ -297,6 +293,5 @@ namespace BryceStory.Utility
             }
             return obj;
         }
-
     }
 }

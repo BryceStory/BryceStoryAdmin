@@ -13,7 +13,6 @@ namespace BryceStory.Utility
 {
     public class GlobalContext
     {
-
         /// <summary>
         /// All registered service and class instance container. Which are used for dependency injection.
         /// </summary>
@@ -47,7 +46,7 @@ namespace BryceStory.Utility
             sb.Append(" |ContentRootPath:" + env.ContentRootPath);
             sb.Append(" |WebRootPath:" + env.WebRootPath);
             sb.Append(" |IsDevelopment:" + env.IsDevelopment());
-            LogHelper.WriteWithTime(sb.ToString());
+            LogHelper.Debug(sb.ToString());
         }
 
         /// <summary>

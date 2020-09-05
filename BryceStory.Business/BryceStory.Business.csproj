@@ -5,10 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="OrganizationManage\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\BryceStory.Business.Cache\BryceStory.Business.Cache.csproj" />
     <ProjectReference Include="..\BryceStory.Entity\BryceStory.Entity.csproj" />
     <ProjectReference Include="..\BryceStory.Service\BryceStory.Service.csproj" />
     <ProjectReference Include="..\BryceStory.Utility\BryceStory.Utility.csproj" />

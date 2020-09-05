@@ -9,10 +9,9 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace BryceStory.MemoryCache
 {
-    public class MemoryCacheImp: ICache
+    public class MemoryCacheImp : ICache
     {
         private IMemoryCache cache = GlobalContext.ServiceProvider.GetService<IMemoryCache>();
-
 
         public bool SetCache<T>(string key, T value, DateTime? expireTime = null)
         {
@@ -29,7 +28,7 @@ namespace BryceStory.MemoryCache
             }
             catch (Exception ex)
             {
-                LogHelper.WriteWithTime(ex);
+                LogHelper.Error(ex);
             }
             return false;
         }

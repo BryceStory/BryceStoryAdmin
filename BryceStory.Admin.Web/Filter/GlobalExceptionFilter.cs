@@ -18,24 +18,24 @@ namespace BryceStory.Admin.Web.Filter
     {
         public void OnException(ExceptionContext context)
         {
-            LogHelper.Write(context.Exception);
-            //if (context.HttpContext.Request.IsAjaxRequest())
-            //{
-            //    TData obj = new TData();
-            //    obj.Message = context.Exception.GetOriginalException().Message;
-            //    if (string.IsNullOrEmpty(obj.Message))
-            //    {
-            //        obj.Message = "抱歉，系统错误，请联系管理员！";
-            //    }
-            //    context.Result = new JsonResult(obj);
-            //    context.ExceptionHandled = true;
-            //}
-            //else
-            //{
-            //    string errorMessage = context.Exception.GetOriginalException().Message;
-            //    context.Result = new RedirectResult("~/Home/Error?message=" + HttpUtility.UrlEncode(errorMessage));
-            //    context.ExceptionHandled = true;
-            //}
+            LogHelper.Error(context.Exception);
+            if (context.HttpContext.Request.IsAjaxRequest())
+            {
+                TData obj = new TData();
+                obj.Message = context.Exception.GetOriginalException().Message;
+                if (string.IsNullOrEmpty(obj.Message))
+                {
+                    obj.Message = "抱歉，系统错误，请联系管理员！";
+                }
+                context.Result = new JsonResult(obj);
+                context.ExceptionHandled = true;
+            }
+            else
+            {
+                string errorMessage = context.Exception.GetOriginalException().Message;
+                context.Result = new RedirectResult("~/Home/Error?message=" + HttpUtility.UrlEncode(errorMessage));
+                context.ExceptionHandled = true;
+            }
         }
 
         public Task OnExceptionAsync(ExceptionContext context)

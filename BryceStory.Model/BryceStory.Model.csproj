@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Param\OrganizationManage\" />
     <Folder Include="Result\SystemManage\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BryceStory.Utility\BryceStory.Utility.csproj" />
   </ItemGroup>
 
 </Project>

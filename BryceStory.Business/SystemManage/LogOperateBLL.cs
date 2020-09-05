@@ -1,6 +1,7 @@
 ﻿using BryceStory.Entity.SystemManage;
 using BryceStory.Enum;
 using BryceStory.Model.Param.SystemManage;
+using BryceStory.Service.OrganizationManage;
 using BryceStory.Service.SystemManage;
 using BryceStory.Utility.Extention;
 using BryceStory.Utility.Model;

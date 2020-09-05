@@ -259,7 +259,7 @@ namespace BryceStory.Data
                 }
                 catch (Exception ex)
                 {
-                    LogHelper.WriteWithTime(ex);
+                    LogHelper.Error(ex);
                 }
             }
             return sql;

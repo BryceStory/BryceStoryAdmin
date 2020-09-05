@@ -5,12 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="OrganizationManage\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\BryceStory.Data.Repository\BryceStory.Data.Repository.csproj" />
-    <ProjectReference Include="..\BryceStory.Data\BryceStory.Data.csproj" />
     <ProjectReference Include="..\BryceStory.Entity\BryceStory.Entity.csproj" />
     <ProjectReference Include="..\BryceStory.Model\BryceStory.Model.csproj" />
   </ItemGroup>

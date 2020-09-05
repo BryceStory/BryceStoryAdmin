@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BryceStory.Cache.Factory\BryceStory.Cache.Factory.csproj" />
+    <ProjectReference Include="..\BryceStory.Entity\BryceStory.Entity.csproj" />
+    <ProjectReference Include="..\BryceStory.Service\BryceStory.Service.csproj" />
+  </ItemGroup>
+
+</Project>

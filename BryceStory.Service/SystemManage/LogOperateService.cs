@@ -1,5 +1,6 @@
 ﻿using BryceStory.Data.Extention;
 using BryceStory.Data.Repository;
+using BryceStory.Entity.SystemManage;
 using BryceStory.Model.Param.SystemManage;
 using BryceStory.Utility;
 using BryceStory.Utility.Extention;
@@ -16,7 +17,7 @@ namespace BryceStory.Service.SystemManage
     public class LogOperateService : RepositoryFactory
     {
         #region 获取数据
-        public async Task<List<BaseEntity>> GetList(LogOperateListParam param)
+        public async Task<List<LogOperateEntity>> GetList(LogOperateListParam param)
         {
             var strSql = new StringBuilder();
             List<DbParameter> filter = ListFilter(param, strSql);

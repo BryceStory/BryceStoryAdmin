@@ -39,7 +39,7 @@ namespace BryceStory.Admin.Web
         {
             if (WebHostEnvironment.IsDevelopment())
             {
-                services.AddRazorPages().AddRazorRuntimeCompilation();
+               services.AddRazorPages().AddRazorRuntimeCompilation();
             }
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -89,7 +89,7 @@ namespace BryceStory.Admin.Web
             }
 
             string resource = Path.Combine(env.ContentRootPath, "Resource");
-          //  FileHelper.CreateDirectory(resource);
+            FileHelper.CreateDirectory(resource);
 
             app.UseStaticFiles(new StaticFileOptions
             {
@@ -98,7 +98,6 @@ namespace BryceStory.Admin.Web
             app.UseStaticFiles(new StaticFileOptions
             {
                 RequestPath = "/Resource",
-                // FileProvider = new PhysicalFileProvider(resource),
                 FileProvider = new PhysicalFileProvider(resource),
                 OnPrepareResponse = GlobalContext.SetCacheControl
             });

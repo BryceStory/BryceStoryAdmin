@@ -47,7 +47,7 @@ namespace BryceStory.Utility
             sb.Append(" |ContentRootPath:" + env.ContentRootPath);
             sb.Append(" |WebRootPath:" + env.WebRootPath);
             sb.Append(" |IsDevelopment:" + env.IsDevelopment());
-            LogHelper.Debug(sb.ToString());
+            LogHelper.WriteWithTime(sb.ToString());
         }
 
         /// <summary>

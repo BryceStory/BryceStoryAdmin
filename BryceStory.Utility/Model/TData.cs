@@ -27,11 +27,12 @@ namespace BryceStory.Utility.Model
         /// <summary>
         /// 列表的记录数
         /// </summary>
-        public int Total { get; set; }
+        public int TotalCount { get; set; }
 
         /// <summary>
         /// 数据
         /// </summary>
-        public T Data { get; set; }
+        public T Result { get; set; }
+
     }
 }

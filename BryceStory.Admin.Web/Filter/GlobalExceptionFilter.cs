@@ -18,7 +18,7 @@ namespace BryceStory.Admin.Web.Filter
     {
         public void OnException(ExceptionContext context)
         {
-            LogHelper.Error(context.Exception);
+            LogHelper.Write(context.Exception);
             //if (context.HttpContext.Request.IsAjaxRequest())
             //{
             //    TData obj = new TData();

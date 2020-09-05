@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 
@@ -38,7 +39,7 @@ namespace BryceStory.Admin.Web
         {
             if (WebHostEnvironment.IsDevelopment())
             {
-              //  services.AddRazorPages().AddRazorRuntimeCompilation();
+                services.AddRazorPages().AddRazorRuntimeCompilation();
             }
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -87,19 +88,20 @@ namespace BryceStory.Admin.Web
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            //string resource = Path.Combine(env.ContentRootPath, "Resource");
-            //FileHelper.CreateDirectory(resource);
+            string resource = Path.Combine(env.ContentRootPath, "Resource");
+          //  FileHelper.CreateDirectory(resource);
 
             app.UseStaticFiles(new StaticFileOptions
             {
                 OnPrepareResponse = GlobalContext.SetCacheControl
             });
-            //app.UseStaticFiles(new StaticFileOptions
-            //{
-            //    RequestPath = "/Resource",
-            //    FileProvider = new PhysicalFileProvider(resource),
-            //    OnPrepareResponse = GlobalContext.SetCacheControl
-            //});
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                RequestPath = "/Resource",
+                // FileProvider = new PhysicalFileProvider(resource),
+                FileProvider = new PhysicalFileProvider(resource),
+                OnPrepareResponse = GlobalContext.SetCacheControl
+            });
             app.UseSession();
             app.UseRouting();
             app.UseEndpoints(endpoints =>

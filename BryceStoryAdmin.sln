@@ -5,37 +5,39 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 Web前端", "05 Web前端", "{7777C9E8-3F97-4E5A-A668-EDEFCFA468C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BryceStory.Admin.Web", "BryceStory.Admin.Web\BryceStory.Admin.Web.csproj", "{89C5601F-6F38-4AF3-A31D-6728FBF7B160}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BryceStory.Admin.Web", "BryceStory.Admin.Web\BryceStory.Admin.Web.csproj", "{89C5601F-6F38-4AF3-A31D-6728FBF7B160}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Framework 基础设施层", "01 Framework 基础设施层", "{A5CE49C6-D458-4932-91F9-0A045E57CD4A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cache 数据缓存接口", "Cache 数据缓存接口", "{6F6BB4CF-B3EE-42F2-A87E-EE52557FBE31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BryceStory.Utility", "BryceStory.Utility\BryceStory.Utility.csproj", "{04DDA0AD-329A-40F8-A193-541E64FD372A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BryceStory.Utility", "BryceStory.Utility\BryceStory.Utility.csproj", "{04DDA0AD-329A-40F8-A193-541E64FD372A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BryceStory.Web.Code", "BryceStory.Web.Code\BryceStory.Web.Code.csproj", "{7A5314E3-B288-479E-995D-66ECFDC756BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BryceStory.Web.Code", "BryceStory.Web.Code\BryceStory.Web.Code.csproj", "{7A5314E3-B288-479E-995D-66ECFDC756BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BryceStory.Cache.Factory", "BryceStory.Cache.Factory\BryceStory.Cache.Factory.csproj", "{E752CACA-B979-45A6-AEB2-F9C895B7DCAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BryceStory.Cache.Factory", "BryceStory.Cache.Factory\BryceStory.Cache.Factory.csproj", "{E752CACA-B979-45A6-AEB2-F9C895B7DCAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BryceStory.Cache.Interface", "BryceStory.Cache.Interface\BryceStory.Cache.Interface.csproj", "{ED8EB5E3-F2BF-4AB7-824E-F57111DFAF42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BryceStory.Cache.Interface", "BryceStory.Cache.Interface\BryceStory.Cache.Interface.csproj", "{ED8EB5E3-F2BF-4AB7-824E-F57111DFAF42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BryceStory.MemoryCache", "BryceStory.MemoryCache\BryceStory.MemoryCache.csproj", "{4B105BA7-6032-42EE-AB57-448D02FBF53F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BryceStory.MemoryCache", "BryceStory.MemoryCache\BryceStory.MemoryCache.csproj", "{4B105BA7-6032-42EE-AB57-448D02FBF53F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 DataAccess数据库核心层", "02 DataAccess数据库核心层", "{674CBD91-22F4-4BE3-8BB9-535C1ECBBBC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BryceStory.Data.Repository", "BryceStory.Data.Repository\BryceStory.Data.Repository.csproj", "{60FF62A0-620B-4482-9D1D-21C89AC4D91A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BryceStory.Data.Repository", "BryceStory.Data.Repository\BryceStory.Data.Repository.csproj", "{60FF62A0-620B-4482-9D1D-21C89AC4D91A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BryceStory.Data", "BryceStory.Data\BryceStory.Data.csproj", "{0BECFF39-FD0B-4B02-85A8-16AB5AD2ADC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BryceStory.Data", "BryceStory.Data\BryceStory.Data.csproj", "{0BECFF39-FD0B-4B02-85A8-16AB5AD2ADC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BryceStory.Data.EF", "BryceStory.Data.EF\BryceStory.Data.EF.csproj", "{4B26020C-3207-496A-B9D3-E64CBD0F898A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BryceStory.Data.EF", "BryceStory.Data.EF\BryceStory.Data.EF.csproj", "{4B26020C-3207-496A-B9D3-E64CBD0F898A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 Entity实体层", "04 Entity实体层", "{B2FB6E44-6B3D-4000-B6EF-90E94EEFB9BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BryceStory.Entity", "BryceStory.Entity\BryceStory.Entity.csproj", "{69D1440A-3B25-42FA-8016-0FF1F0417D32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BryceStory.Entity", "BryceStory.Entity\BryceStory.Entity.csproj", "{69D1440A-3B25-42FA-8016-0FF1F0417D32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BryceStory.Enum", "BryceStory.Enum\BryceStory.Enum.csproj", "{D84E7782-1051-4D5E-AF68-1377A423F8F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BryceStory.Enum", "BryceStory.Enum\BryceStory.Enum.csproj", "{D84E7782-1051-4D5E-AF68-1377A423F8F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BryceStory.RedisCache", "BryceStory.RedisCache\BryceStory.RedisCache.csproj", "{6784DD0F-4DF5-476B-AA1F-37E3DDFE6535}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BryceStory.RedisCache", "BryceStory.RedisCache\BryceStory.RedisCache.csproj", "{6784DD0F-4DF5-476B-AA1F-37E3DDFE6535}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Business 业务逻辑层", "03 Business 业务逻辑层", "{88BB8070-3CC4-494E-B21D-5195F2CA151A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

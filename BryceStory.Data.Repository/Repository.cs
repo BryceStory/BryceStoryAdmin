@@ -80,6 +80,7 @@ namespace BryceStory.Data.Repository
         {
             return await db.Delete<T>(entity);
         }
+        //其中 class代表引用类型约束   new()代表无参构造函数约束
         public async Task<int> Delete<T>(Expression<Func<T, bool>> condition) where T : class, new()
         {
             return await db.Delete<T>(condition);

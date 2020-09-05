@@ -105,8 +105,8 @@ namespace BryceStory.Admin.Web
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("areas", "{area:exists}/{controller=Home}/{action=Login}/{id?}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Login}/{id?}");
             });
             GlobalContext.ServiceProvider = app.ApplicationServices;
         }

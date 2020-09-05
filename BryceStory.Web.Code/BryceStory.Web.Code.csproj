@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BryceStory.Cache.Factory\BryceStory.Cache.Factory.csproj" />
     <ProjectReference Include="..\BryceStory.Data.Repository\BryceStory.Data.Repository.csproj" />
     <ProjectReference Include="..\BryceStory.Enum\BryceStory.Enum.csproj" />
     <ProjectReference Include="..\BryceStory.Utility\BryceStory.Utility.csproj" />

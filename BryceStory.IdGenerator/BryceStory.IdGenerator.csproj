@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="SystemManage\" />
+    <ProjectReference Include="..\BryceStory.Utility\BryceStory.Utility.csproj" />
   </ItemGroup>
 
 </Project>

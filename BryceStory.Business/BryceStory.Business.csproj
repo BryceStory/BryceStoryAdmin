@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="OrganizationManage\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BryceStory.Entity\BryceStory.Entity.csproj" />
+    <ProjectReference Include="..\BryceStory.Service\BryceStory.Service.csproj" />
+    <ProjectReference Include="..\BryceStory.Utility\BryceStory.Utility.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace BryceStory.Utility.Model
 {
+    /// <summary>
+    /// 数据传输对象
+    /// </summary>
     public class TData
     {
         /// <summary>
@@ -27,12 +30,11 @@ namespace BryceStory.Utility.Model
         /// <summary>
         /// 列表的记录数
         /// </summary>
-        public int TotalCount { get; set; }
+        public int Total { get; set; }
 
         /// <summary>
         /// 数据
         /// </summary>
-        public T Result { get; set; }
-
+        public T Data { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace BryceStory.Admin.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-
+            
 
             return View();
         }

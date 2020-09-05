@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="SystemManage\" />
+    <Folder Include="Param\OrganizationManage\" />
+    <Folder Include="Result\SystemManage\" />
   </ItemGroup>
 
 </Project>

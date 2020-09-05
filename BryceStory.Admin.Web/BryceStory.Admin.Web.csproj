@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BryceStory.Entity\BryceStory.Entity.csproj" />
     <ProjectReference Include="..\BryceStory.Utility\BryceStory.Utility.csproj" />
     <ProjectReference Include="..\BryceStory.Web.Code\BryceStory.Web.Code.csproj" />
   </ItemGroup>

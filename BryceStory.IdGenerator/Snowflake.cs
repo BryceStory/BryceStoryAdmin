@@ -7,17 +7,24 @@ namespace BryceStory.IdGenerator
 {
     public class Snowflake
     {
-        private const long TwEpoch = 1546272000000L;//2019-01-01 00:00:00
+        //唯一时间，这是一个避免重复的随机量，自行设定不要大于当前时间戳
+        private const long TwEpoch = 1546272000000L;//2019-01-01 00:00:00 
 
-        private const int WorkerIdBits = 5;
+        //机器码字节数。4个字节用来保存机器码(定义为Long类型会出现，最大偏移64位，所以左移64位没有意义)
+        private const int WorkerIdBits = 5; 
         private const int DatacenterIdBits = 5;
+        //计数器字节数，10个字节用来保存计数码
         private const int SequenceBits = 12;
+        //最大机器ID
         private const long MaxWorkerId = -1L ^ (-1L << WorkerIdBits);
         private const long MaxDatacenterId = -1L ^ (-1L << DatacenterIdBits);
 
+        //机器码数据左移位数，就是后面计数器占用的位数
         private const int WorkerIdShift = SequenceBits;
         private const int DatacenterIdShift = SequenceBits + WorkerIdBits;
+
         private const int TimestampLeftShift = SequenceBits + WorkerIdBits + DatacenterIdBits;
+        //一微秒内可以产生计数，如果达到该值则等到下一微妙在进行生成
         private const long SequenceMask = -1L ^ (-1L << SequenceBits);
 
         private long _sequence = 0L;
@@ -74,18 +81,19 @@ namespace BryceStory.IdGenerator
                 }
 
                 if (_lastTimestamp == timestamp)
-                {
-                    _sequence = (_sequence + 1) & SequenceMask;
+                {//同一微妙中生成ID
+                    _sequence = (_sequence + 1) & SequenceMask;//用&运算计算该微秒内产生的计数是否已经到达上限
                     if (_sequence == 0)
                     {
+                        //一微妙内产生的ID计数已达上限，等待下一微妙
                         timestamp = TilNextMillis(_lastTimestamp);
                     }
                 }
                 else
-                {
-                    _sequence = 0;
+                {//不同微秒生成ID
+                    _sequence = 0;//计数清0
                 }
-                _lastTimestamp = timestamp;
+                _lastTimestamp = timestamp;//把当前时间戳保存为最后生成ID的时间戳
                 CurrentId = ((timestamp - TwEpoch) << TimestampLeftShift) |
                          (DatacenterId << DatacenterIdShift) |
                          (WorkerId << WorkerIdShift) | _sequence;
@@ -94,6 +102,11 @@ namespace BryceStory.IdGenerator
             }
         }
 
+        /// <summary>
+        /// 获取下一微秒时间戳
+        /// </summary>
+        /// <param name="lastTimestamp"></param>
+        /// <returns></returns>
         private long TilNextMillis(long lastTimestamp)
         {
             var timestamp = DateTimeHelper.GetUnixTimeStamp(DateTime.Now);
